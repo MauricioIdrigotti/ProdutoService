@@ -16,10 +16,8 @@ public class Produto {
 	private BigDecimal preco_desconto;
 	private LocalDateTime dataDeCadastro;
 	private Atributos atributosDoProduto;
-	private Fabricante fabricante;
 	private Avaliacao avaliacao;
 	private Categoria categoria;
-	private Estoque estoque;
 	private Imagem imagensDoProduto;
 	private Dimensao dimensaoDoProduto;
 
@@ -111,14 +109,6 @@ public class Produto {
 		this.atributosDoProduto = atributosDoProduto;
 	}
 
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
-	}
-
 	public Avaliacao getAvaliacao() {
 		return avaliacao;
 	}
@@ -133,14 +123,6 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-
-	public Estoque getEstoque() {
-		return estoque;
-	}
-
-	public void setEstoque(Estoque estoque) {
-		this.estoque = estoque;
 	}
 
 	public Imagem getImagensDoProduto() {
