@@ -1,10 +1,27 @@
-package br.com.magnasistemas.produtoservice.model;
+package br.com.magnasistemas.produtoservice.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class Produto {
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "TB_PRODUTO")
+public class ProdutoEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private String nomeProduto;
 	private String descricao;
@@ -16,11 +33,21 @@ public class Produto {
 	private BigDecimal custoProduto;
 	private BigDecimal preco_desconto;
 	private LocalDateTime dataDeCadastro;
-	private Atributos atributosDoProduto;
-	private Avaliacao avaliacao;
-	private Categoria categoria;
-	private Set<Imagem> imagensDoProduto;
-	private Dimensao dimensaoDoProduto;
+
+	@OneToOne
+	private AtributosEntity atributosDoProduto;
+
+	@OneToOne
+	private AvaliacaoEntity avaliacao;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private CategoriaEntity categoriaEntity;
+
+	@OneToMany(mappedBy = "produtoEntity", cascade = CascadeType.ALL)
+	private Set<ImagemEntity> imagensDoProduto;
+
+	@OneToOne
+	private DimensaoEntity dimensaoDoProduto;
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -102,43 +129,51 @@ public class Produto {
 		this.dataDeCadastro = dataDeCadastro;
 	}
 
-	public Atributos getAtributosDoProduto() {
+	public AtributosEntity getAtributosDoProduto() {
 		return atributosDoProduto;
 	}
 
-	public void setAtributosDoProduto(Atributos atributosDoProduto) {
+	public void setAtributosDoProduto(AtributosEntity atributosDoProduto) {
 		this.atributosDoProduto = atributosDoProduto;
 	}
 
-	public Avaliacao getAvaliacao() {
+	public AvaliacaoEntity getAvaliacao() {
 		return avaliacao;
 	}
 
-	public void setAvaliacao(Avaliacao avaliacao) {
+	public void setAvaliacao(AvaliacaoEntity avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public CategoriaEntity getCategoriaEntity() {
+		return categoriaEntity;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setCategoriaEntity(CategoriaEntity categoriaEntity) {
+		this.categoriaEntity = categoriaEntity;
 	}
 
-	public Set<Imagem> getImagensDoProduto() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Set<ImagemEntity> getImagensDoProduto() {
 		return imagensDoProduto;
 	}
 
-	public void setImagensDoProduto(Set<Imagem> imagensDoProduto) {
+	public void setImagensDoProduto(Set<ImagemEntity> imagensDoProduto) {
 		this.imagensDoProduto = imagensDoProduto;
 	}
 
-	public Dimensao getDimensaoDoProduto() {
+	public DimensaoEntity getDimensaoDoProduto() {
 		return dimensaoDoProduto;
 	}
 
-	public void setDimensaoDoProduto(Dimensao dimensaoDoProduto) {
+	public void setDimensaoDoProduto(DimensaoEntity dimensaoDoProduto) {
 		this.dimensaoDoProduto = dimensaoDoProduto;
 	}
 }

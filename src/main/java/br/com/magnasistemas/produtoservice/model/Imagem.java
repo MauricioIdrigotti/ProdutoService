@@ -4,9 +4,18 @@ import br.com.magnasistemas.produtoservice.enums.Tamanho;
 
 public class Imagem {
 
+	private Produto produto;
 	private Integer altura;
 	private Integer largura;
 	private Tamanho tamanhoImagem;
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
 	public Integer getAltura() {
 		return altura;

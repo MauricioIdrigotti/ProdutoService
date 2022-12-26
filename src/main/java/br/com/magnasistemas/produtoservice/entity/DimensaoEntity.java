@@ -1,20 +1,43 @@
-package br.com.magnasistemas.produtoservice.model;
+package br.com.magnasistemas.produtoservice.entity;
 
 import java.math.BigDecimal;
 
-public class Dimensao {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
-	private Produto produto;
+@Entity
+@Table(name = "TB_ENTITY")
+public class DimensaoEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@OneToOne
+	private ProdutoEntity produto;
+	
 	private BigDecimal comprimentoCm;
 	private BigDecimal larguraCm;
 	private BigDecimal alturaCm;
 	private BigDecimal pesoKg;
+	
+	public Long getId() {
+		return id;
+	}
 
-	public Produto getProduto() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public ProdutoEntity getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(ProdutoEntity produto) {
 		this.produto = produto;
 	}
 
