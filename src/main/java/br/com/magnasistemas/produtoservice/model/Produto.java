@@ -4,18 +4,41 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotNull;
+
 public class Produto {
 
+	@NotNull(message = "O nome do produto não pode ser nulo")
 	private String nomeProduto;
+	
+	@NotNull(message = "A descrição não pode ser nula")
 	private String descricao;
+	
+	@NotNull(message = "O EAN não pode ser nulo")
 	private String EAN;
+	
+	@Nullable
 	private String NCM;
+	
+	@Nullable
 	private String CEST;
+	
+	@Nullable
 	private String mensagemDeGarantia;
+	
+	@Nullable
 	private Integer mesesDeGarantia;
+	
+	@NotNull(message = "O custo do produto não pode ser nulo")
 	private BigDecimal custoProduto;
+	
+	@NotNull(message = "O preço não pode ser nulo")
 	private BigDecimal preco_desconto;
+	
+	@NotNull(message = "A data não pode ser nula")
 	private LocalDateTime dataDeCadastro;
+	
 	private Atributos atributosDoProduto;
 	private Avaliacao avaliacao;
 	private Categoria categoria;

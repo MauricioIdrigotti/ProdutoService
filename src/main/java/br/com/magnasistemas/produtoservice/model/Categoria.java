@@ -2,10 +2,16 @@ package br.com.magnasistemas.produtoservice.model;
 
 import java.util.Set;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Categoria {
 
+	@NotNull(message = "A categoria não pode ser nulo")
 	private String nomeCategoria;
+	
+	@NotNull(message = "A sub-categoria não pode ser nulo")
 	private String subCategoria;
+	
 	private Set<Produto> produtosDaCategoria;
 	
 	public String getNomeCategoria() {

@@ -2,12 +2,22 @@ package br.com.magnasistemas.produtoservice.model;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Dimensao {
 
 	private Produto produto;
+	
+	@NotNull(message = "O comprimento não pode ser nulo")
 	private BigDecimal comprimentoCm;
+	
+	@NotNull(message = "A largura não pode ser nula")
 	private BigDecimal larguraCm;
+	
+	@NotNull(message = "A altura não pode ser nula")
 	private BigDecimal alturaCm;
+	
+	@NotNull(message = "O peso não pode ser nulo")
 	private BigDecimal pesoKg;
 
 	public Produto getProduto() {

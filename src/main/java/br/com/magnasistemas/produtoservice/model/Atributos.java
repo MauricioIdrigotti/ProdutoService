@@ -1,10 +1,19 @@
 package br.com.magnasistemas.produtoservice.model;
 
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotNull;
+
 public class Atributos {
 
 	private Produto produto;
+	
+	@Nullable
 	private String publicoAlvo;
+	
+	@NotNull(message = "A cor não pode ser nulo")
 	private String cor;
+	
+	@NotNull(message = "O material não pode ser nulo")
 	private String material;
 	
 	public Produto getProduto() {

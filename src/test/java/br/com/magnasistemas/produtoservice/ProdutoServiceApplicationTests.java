@@ -2,6 +2,7 @@ package br.com.magnasistemas.produtoservice;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.DisplayName;
@@ -49,6 +50,11 @@ class ProdutoServiceApplicationTests {
 	@DisplayName("Esse teste garante o cadastro de um produto e a verificação de retorno do status HTTP 201 (CREATED)")
 	void cadastrarProduto() {
 		Produto produto = new Produto();
+		produto.setNomeProduto("Cadeira");
+		produto.setDescricao("Uma cadeira legal");
+		produto.setEAN("12131121");
+		produto.setCustoProduto(new BigDecimal(75.0));
+		produto.setPreco_desconto(new BigDecimal(75.0));
 		produto.setDataDeCadastro(LocalDateTime.now());
 		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto", HttpMethod.POST, entity, Produto.class);
@@ -66,6 +72,11 @@ class ProdutoServiceApplicationTests {
 	@DisplayName("Esse teste garante a atualização de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 201 (CREATED)")
 	void atualizarProduto() {
 		Produto produto = new Produto();
+		produto.setNomeProduto("Cadeira");
+		produto.setDescricao("Uma cadeira legal");
+		produto.setEAN("12131121");
+		produto.setCustoProduto(new BigDecimal(75.0));
+		produto.setPreco_desconto(new BigDecimal(75.0));
 		produto.setDataDeCadastro(LocalDateTime.now());
 		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.PUT, entity, Produto.class);
