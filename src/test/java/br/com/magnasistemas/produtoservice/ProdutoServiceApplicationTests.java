@@ -63,7 +63,7 @@ class ProdutoServiceApplicationTests {
 	}
 	
 	@Test
-	@DisplayName("Esse teste garante a atualização de um carrinho de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 201 (CREATED)")
+	@DisplayName("Esse teste garante a atualização de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 201 (CREATED)")
 	void atualizarProduto() {
 		Produto produto = new Produto();
 		produto.setDataDeCadastro(LocalDateTime.now());
@@ -87,7 +87,7 @@ class ProdutoServiceApplicationTests {
 	}
 	
 	@Test
-	@DisplayName("Esse teste demonstra uma falha na aplicação ao tentar deletar um carrinho e passar um ID incorreto na URL e a verificação de retorno do status HTTP 400 (BAD REQUEST)")
+	@DisplayName("Esse teste demonstra uma falha na aplicação ao tentar deletar um produto e passar um ID incorreto na URL e a verificação de retorno do status HTTP 400 (BAD REQUEST)")
 	void erroAoDeletarProdutoPoisOIdEhInvalido() {
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/j", HttpMethod.DELETE, null, Produto.class);
 		assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
