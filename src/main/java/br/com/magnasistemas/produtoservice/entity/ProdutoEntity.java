@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,15 +24,34 @@ public class ProdutoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "nome_produto")
 	private String nomeProduto;
+	
+	@Column(name = "descricao")
 	private String descricao;
+	
+	@Column(name = "ean")
 	private String EAN;
+	
+	@Column(name = "ncm")
 	private String NCM;
+	
+	@Column(name = "cest")
 	private String CEST;
+	
+	@Column(name = "mensagem_garantia")
 	private String mensagemDeGarantia;
+	
+	@Column(name = "meses_garantia")
 	private Integer mesesDeGarantia;
+	
+	@Column(name = "custo_produto")
 	private BigDecimal custoProduto;
-	private BigDecimal preco_desconto;
+	
+	@Column(name = "preco_desconto")
+	private BigDecimal precoDesconto;
+	
+	@Column(name = "data_cadastro")
 	private LocalDateTime dataDeCadastro;
 
 	@OneToOne
@@ -113,12 +133,12 @@ public class ProdutoEntity {
 		this.custoProduto = custoProduto;
 	}
 
-	public BigDecimal getPreco_desconto() {
-		return preco_desconto;
+	public BigDecimal getPrecoDesconto() {
+		return precoDesconto;
 	}
 
-	public void setPreco_desconto(BigDecimal preco_desconto) {
-		this.preco_desconto = preco_desconto;
+	public void setPrecoDesconto(BigDecimal precoDesconto) {
+		this.precoDesconto = precoDesconto;
 	}
 
 	public LocalDateTime getDataDeCadastro() {

@@ -1,6 +1,7 @@
 package br.com.magnasistemas.produtoservice.entity;
 
 import br.com.magnasistemas.produtoservice.enums.Tamanho;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,8 +21,13 @@ public class ImagemEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private ProdutoEntity produtoEntity;
 	
+	@Column(name = "altura_produto")
 	private Integer altura;
+	
+	@Column(name = "largura_produto")
 	private Integer largura;
+	
+	@Column(name = "tamanho_imagem")
 	private Tamanho tamanhoImagem;
 	
 	public Long getId() {

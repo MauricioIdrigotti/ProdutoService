@@ -1,5 +1,6 @@
 package br.com.magnasistemas.produtoservice.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,8 +19,13 @@ public class AtributosEntity {
 	@OneToOne
 	private ProdutoEntity produto;
 
+	@Column(name = "publico_alvo")
 	private String publicoAlvo;
+	
+	@Column(name = "cor")
 	private String cor;
+	
+	@Column(name = "material")
 	private String material;
 
 	public Long getId() {

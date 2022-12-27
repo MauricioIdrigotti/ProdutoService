@@ -54,7 +54,7 @@ class ProdutoServiceApplicationTests {
 		produto.setDescricao("Uma cadeira legal");
 		produto.setEAN("12131121");
 		produto.setCustoProduto(new BigDecimal(75.0));
-		produto.setPreco_desconto(new BigDecimal(75.0));
+		produto.setPrecoDesconto(new BigDecimal(75.0));
 		produto.setDataDeCadastro(LocalDateTime.now());
 		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto", HttpMethod.POST, entity, Produto.class);
@@ -76,7 +76,7 @@ class ProdutoServiceApplicationTests {
 		produto.setDescricao("Uma cadeira legal");
 		produto.setEAN("12131121");
 		produto.setCustoProduto(new BigDecimal(75.0));
-		produto.setPreco_desconto(new BigDecimal(75.0));
+		produto.setPrecoDesconto(new BigDecimal(75.0));
 		produto.setDataDeCadastro(LocalDateTime.now());
 		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.PUT, entity, Produto.class);

@@ -2,6 +2,7 @@ package br.com.magnasistemas.produtoservice.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +21,16 @@ public class DimensaoEntity {
 	@OneToOne
 	private ProdutoEntity produto;
 	
+	@Column(name = "comprimento_produto")
 	private BigDecimal comprimentoCm;
+	
+	@Column(name = "largura_produto")
 	private BigDecimal larguraCm;
+	
+	@Column(name = "altura_produto")
 	private BigDecimal alturaCm;
+	
+	@Column(name = "peso_produto")
 	private BigDecimal pesoKg;
 	
 	public Long getId() {

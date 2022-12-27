@@ -3,6 +3,7 @@ package br.com.magnasistemas.produtoservice.entity;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,10 @@ public class CategoriaEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "nome_categoria")
 	private String nomeCategoria;
+	
+	@Column(name = "nome_subcategoria")
 	private String subCategoria;
 
 	@OneToMany(mappedBy = "categoriaEntity", cascade = CascadeType.ALL)

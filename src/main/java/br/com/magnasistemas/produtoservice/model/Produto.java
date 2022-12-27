@@ -34,7 +34,7 @@ public class Produto {
 	private BigDecimal custoProduto;
 	
 	@NotNull(message = "O preço não pode ser nulo")
-	private BigDecimal preco_desconto;
+	private BigDecimal precoDesconto;
 	
 	@NotNull(message = "A data não pode ser nula")
 	private LocalDateTime dataDeCadastro;
@@ -109,12 +109,12 @@ public class Produto {
 		this.custoProduto = custoProduto;
 	}
 
-	public BigDecimal getPreco_desconto() {
-		return preco_desconto;
+	public BigDecimal getPrecoDesconto() {
+		return precoDesconto;
 	}
 
-	public void setPreco_desconto(BigDecimal preco_desconto) {
-		this.preco_desconto = preco_desconto;
+	public void setPrecoDesconto(BigDecimal precoDesconto) {
+		this.precoDesconto = precoDesconto;
 	}
 
 	public LocalDateTime getDataDeCadastro() {
