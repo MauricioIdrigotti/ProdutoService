@@ -49,14 +49,27 @@ class ProdutoServiceApplicationTests {
 	@Test
 	@DisplayName("Esse teste garante o cadastro de um produto e a verificação de retorno do status HTTP 201 (CREATED)")
 	void cadastrarProduto() {
-		Produto produto = new Produto();
-		produto.setNomeProduto("Cadeira");
-		produto.setDescricao("Uma cadeira legal");
-		produto.setEAN("12131121");
-		produto.setCustoProduto(new BigDecimal(75.0));
-		produto.setPrecoDesconto(new BigDecimal(75.0));
-		produto.setDataDeCadastro(LocalDateTime.now());
-		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
+		Produto build = new Produto.ProdutoBuilder()
+				.CEST("123456")
+				.custoProduto(new BigDecimal(75.0))
+				.dataDeCadastro(LocalDateTime.now())
+				.descricao("123456")
+				.EAN("123456")
+				.mesesDeGarantia(25)
+				.mensagemDeGarantia("123456")
+				.NCM("123456")
+				.precoDesconto(new BigDecimal(75.0))
+				.nomeProduto("123456")
+				.build();
+		
+//		Produto produto = new Produto();
+//		produto.setNomeProduto("Cadeira");
+//		produto.setDescricao("Uma cadeira legal");
+//		produto.setEAN("12131121");
+//		produto.setCustoProduto(new BigDecimal(75.0));
+//		produto.setPrecoDesconto(new BigDecimal(75.0));
+//		produto.setDataDeCadastro(LocalDateTime.now());
+		HttpEntity<Produto> entity = new HttpEntity<Produto>(build);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto", HttpMethod.POST, entity, Produto.class);
 		assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 	}

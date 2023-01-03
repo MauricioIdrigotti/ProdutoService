@@ -45,6 +45,96 @@ public class Produto {
 	private Set<Imagem> imagensDoProduto;
 	private Dimensao dimensaoDoProduto;
 
+	public Produto(@NotNull(message = "O nome do produto não pode ser nulo") String nomeProduto,
+			@NotNull(message = "A descrição não pode ser nula") String descricao,
+			@NotNull(message = "O EAN não pode ser nulo") String eAN, String nCM, String cEST,
+			String mensagemDeGarantia, Integer mesesDeGarantia,
+			@NotNull(message = "O custo do produto não pode ser nulo") BigDecimal custoProduto,
+			@NotNull(message = "O preço não pode ser nulo") BigDecimal precoDesconto,
+			@NotNull(message = "A data não pode ser nula") LocalDateTime dataDeCadastro) {
+		super();
+		this.nomeProduto = nomeProduto;
+		this.descricao = descricao;
+		EAN = eAN;
+		NCM = nCM;
+		CEST = cEST;
+		this.mensagemDeGarantia = mensagemDeGarantia;
+		this.mesesDeGarantia = mesesDeGarantia;
+		this.custoProduto = custoProduto;
+		this.precoDesconto = precoDesconto;
+		this.dataDeCadastro = dataDeCadastro;
+	}
+
+	public Produto() {
+	}
+
+	public static class ProdutoBuilder {
+		private String nomeProduto;
+		private String descricao;
+		private String EAN;
+		private String NCM;
+		private String CEST;
+		private String mensagemDeGarantia;
+		private Integer mesesDeGarantia;
+		private BigDecimal custoProduto;
+		private BigDecimal precoDesconto;
+		private LocalDateTime dataDeCadastro;
+		
+		public ProdutoBuilder nomeProduto(String nomeProduto) {
+			this.nomeProduto = nomeProduto;
+			return this;
+		}
+		
+		public ProdutoBuilder descricao(String descricao) {
+			this.descricao = descricao;
+			return this;
+		}
+		
+		public ProdutoBuilder EAN(String EAN) {
+			this.EAN = EAN;
+			return this;
+		}
+		
+		public ProdutoBuilder NCM(String NCM) {
+			this.NCM = NCM;
+			return this;
+		}
+		
+		public ProdutoBuilder CEST(String CEST) {
+			this.CEST = CEST;
+			return this;
+		}
+		
+		public ProdutoBuilder mensagemDeGarantia(String mensagemDeGarantia) {
+			this.mensagemDeGarantia = mensagemDeGarantia;
+			return this;
+		}
+		
+		public ProdutoBuilder mesesDeGarantia(Integer mesesDeGarantia) {
+			this.mesesDeGarantia = mesesDeGarantia;
+			return this;
+		}
+		
+		public ProdutoBuilder custoProduto(BigDecimal custoProduto) {
+			this.custoProduto = custoProduto;
+			return this;
+		}
+		
+		public ProdutoBuilder precoDesconto(BigDecimal precoDesconto) {
+			this.precoDesconto = precoDesconto;
+			return this;
+		}
+		
+		public ProdutoBuilder dataDeCadastro(LocalDateTime dataDeCadastro) {
+			this.dataDeCadastro = dataDeCadastro;
+			return this;
+		}
+		
+		public Produto build() {
+			return new Produto(nomeProduto, descricao, EAN, NCM, CEST, mensagemDeGarantia, mesesDeGarantia, custoProduto, precoDesconto, dataDeCadastro); 
+		}
+	}
+	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}

@@ -36,5 +36,26 @@ public class Avaliacao {
 	public void setValorAvaliacao(Integer valorAvaliacao) {
 		this.valorAvaliacao = valorAvaliacao;
 	}
-
+	
+//	public static class AvaliacaoBuilder {
+//		
+//		private Produto produto;
+//		private Integer valorAvaliacao;
+//		private String comentario;
+//		
+//		public AvaliacaoBuilder produto(Produto produto) {
+//			this.produto = produto;
+//			return this;
+//		}
+//		
+//		public AvaliacaoBuilder valorAvaliacao(Integer valorAvaliacao) {
+//			this.valorAvaliacao = valorAvaliacao;
+//			return this;
+//		}
+//		
+//		public AvaliacaoBuilder comentario(String comentario) {
+//			this.comentario = comentario;
+//			return this;
+//		}
+//	}
 }
