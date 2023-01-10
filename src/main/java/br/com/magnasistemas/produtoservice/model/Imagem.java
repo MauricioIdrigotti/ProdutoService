@@ -4,8 +4,6 @@ import br.com.magnasistemas.produtoservice.enums.Tamanho;
 import jakarta.validation.constraints.NotNull;
 
 public class Imagem {
-
-	private Produto produto;
 	
 	@NotNull(message = "A altura não pode ser nula")
 	private Integer altura;
@@ -15,14 +13,6 @@ public class Imagem {
 	
 	@NotNull(message = "O tamanho não pode ser nulo")
 	private Tamanho tamanhoImagem;
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 
 	public Integer getAltura() {
 		return altura;

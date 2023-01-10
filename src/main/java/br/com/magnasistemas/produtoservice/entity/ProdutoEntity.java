@@ -6,6 +6,7 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -54,21 +54,21 @@ public class ProdutoEntity {
 	@Column(name = "data_cadastro")
 	private LocalDateTime dataDeCadastro;
 
-	@OneToOne
+	@Embedded
 	private AtributosEntity atributosDoProduto;
 
-	@OneToOne
+	@Embedded
 	private AvaliacaoEntity avaliacao;
+	
+	@Embedded
+	private DimensaoEntity dimensaoDoProduto;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private CategoriaEntity categoriaEntity;
 
 	@OneToMany(mappedBy = "produtoEntity", cascade = CascadeType.ALL)
 	private Set<ImagemEntity> imagensDoProduto;
-
-	@OneToOne
-	private DimensaoEntity dimensaoDoProduto;
-
+	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
@@ -165,11 +165,11 @@ public class ProdutoEntity {
 		this.avaliacao = avaliacao;
 	}
 
-	public CategoriaEntity getCategoriaEntity() {
+	public CategoriaEntity getCategoria() {
 		return categoriaEntity;
 	}
 
-	public void setCategoriaEntity(CategoriaEntity categoriaEntity) {
+	public void setCategoria(CategoriaEntity categoriaEntity) {
 		this.categoriaEntity = categoriaEntity;
 	}
 
@@ -196,4 +196,5 @@ public class ProdutoEntity {
 	public void setDimensaoDoProduto(DimensaoEntity dimensaoDoProduto) {
 		this.dimensaoDoProduto = dimensaoDoProduto;
 	}
+
 }

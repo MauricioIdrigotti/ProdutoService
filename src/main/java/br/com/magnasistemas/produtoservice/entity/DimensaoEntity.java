@@ -3,23 +3,10 @@ package br.com.magnasistemas.produtoservice.entity;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.Embeddable;
 
-@Entity
-@Table(name = "TB_DIMENSAO")
+@Embeddable
 public class DimensaoEntity {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@OneToOne
-	private ProdutoEntity produto;
 	
 	@Column(name = "comprimento_produto")
 	private BigDecimal comprimentoCm;
@@ -32,22 +19,6 @@ public class DimensaoEntity {
 	
 	@Column(name = "peso_produto")
 	private BigDecimal pesoKg;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public ProdutoEntity getProduto() {
-		return produto;
-	}
-
-	public void setProduto(ProdutoEntity produto) {
-		this.produto = produto;
-	}
 
 	public BigDecimal getComprimentoCm() {
 		return comprimentoCm;

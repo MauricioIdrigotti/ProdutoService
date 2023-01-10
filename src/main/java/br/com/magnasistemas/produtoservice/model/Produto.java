@@ -8,7 +8,7 @@ import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 
 public class Produto {
-
+	
 	@NotNull(message = "O nome do produto não pode ser nulo")
 	private String nomeProduto;
 	
@@ -134,7 +134,7 @@ public class Produto {
 			return new Produto(nomeProduto, descricao, EAN, NCM, CEST, mensagemDeGarantia, mesesDeGarantia, custoProduto, precoDesconto, dataDeCadastro); 
 		}
 	}
-	
+
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
