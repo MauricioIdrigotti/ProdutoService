@@ -21,9 +21,6 @@ public class CategoriaEntity {
 	@Column(name = "nome_subcategoria")
 	private String subCategoria;
 
-//	@OneToMany(mappedBy = "categoriaEntity", cascade = CascadeType.PERSIST)
-//	private Set<ProdutoEntity> produtosDaCategoria;
-
 	public Long getId() {
 		return id;
 	}
@@ -47,12 +44,4 @@ public class CategoriaEntity {
 	public void setSubCategoria(String subCategoria) {
 		this.subCategoria = subCategoria;
 	}
-
-//	public Set<ProdutoEntity> getProdutosDaCategoria() {
-//		return produtosDaCategoria;
-//	}
-//
-//	public void setProdutosDaCategoria(Set<ProdutoEntity> produtosDaCategoria) {
-//		this.produtosDaCategoria = produtosDaCategoria;
-//	}
 }
