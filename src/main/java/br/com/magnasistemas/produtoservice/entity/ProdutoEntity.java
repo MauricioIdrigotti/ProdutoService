@@ -63,10 +63,10 @@ public class ProdutoEntity {
 	@Embedded
 	private DimensaoEntity dimensaoDoProduto;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private CategoriaEntity categoriaEntity;
 
-	@OneToMany(mappedBy = "produtoEntity", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Set<ImagemEntity> imagensDoProduto;
 	
 	public String getNomeProduto() {

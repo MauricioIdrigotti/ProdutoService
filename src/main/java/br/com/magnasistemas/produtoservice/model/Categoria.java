@@ -25,4 +25,5 @@ public class Categoria {
 	public void setSubCategoria(String subCategoria) {
 		this.subCategoria = subCategoria;
 	}
+
 }

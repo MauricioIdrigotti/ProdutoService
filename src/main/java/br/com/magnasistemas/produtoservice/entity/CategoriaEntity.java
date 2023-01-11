@@ -1,14 +1,10 @@
 package br.com.magnasistemas.produtoservice.entity;
 
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +21,8 @@ public class CategoriaEntity {
 	@Column(name = "nome_subcategoria")
 	private String subCategoria;
 
-	@OneToMany(mappedBy = "categoriaEntity", cascade = CascadeType.ALL)
-	private Set<ProdutoEntity> produtosDaCategoria;
+//	@OneToMany(mappedBy = "categoriaEntity", cascade = CascadeType.PERSIST)
+//	private Set<ProdutoEntity> produtosDaCategoria;
 
 	public Long getId() {
 		return id;
@@ -52,11 +48,11 @@ public class CategoriaEntity {
 		this.subCategoria = subCategoria;
 	}
 
-	public Set<ProdutoEntity> getProdutosDaCategoria() {
-		return produtosDaCategoria;
-	}
-
-	public void setProdutosDaCategoria(Set<ProdutoEntity> produtosDaCategoria) {
-		this.produtosDaCategoria = produtosDaCategoria;
-	}
+//	public Set<ProdutoEntity> getProdutosDaCategoria() {
+//		return produtosDaCategoria;
+//	}
+//
+//	public void setProdutosDaCategoria(Set<ProdutoEntity> produtosDaCategoria) {
+//		this.produtosDaCategoria = produtosDaCategoria;
+//	}
 }

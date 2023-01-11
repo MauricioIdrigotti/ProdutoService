@@ -1,13 +1,13 @@
 package br.com.magnasistemas.produtoservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.magnasistemas.produtoservice.enums.Tamanho;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,10 +16,8 @@ public class ImagemEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Long id;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private ProdutoEntity produtoEntity;
 	
 	@Column(name = "altura_produto")
 	private Integer altura;
@@ -36,14 +34,6 @@ public class ImagemEntity {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public ProdutoEntity getProdutoEntity() {
-		return produtoEntity;
-	}
-
-	public void setProdutoEntity(ProdutoEntity produtoEntity) {
-		this.produtoEntity = produtoEntity;
 	}
 
 	public Integer getAltura() {

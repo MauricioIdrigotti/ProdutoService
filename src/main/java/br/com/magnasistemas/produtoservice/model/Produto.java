@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import br.com.magnasistemas.produtoservice.entity.ImagemEntity;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 
@@ -42,7 +43,7 @@ public class Produto {
 	private Atributos atributosDoProduto;
 	private Avaliacao avaliacao;
 	private Categoria categoria;
-	private Set<Imagem> imagensDoProduto;
+	private Set<ImagemEntity> imagensDoProduto;
 	private Dimensao dimensaoDoProduto;
 
 	public Produto(@NotNull(message = "O nome do produto não pode ser nulo") String nomeProduto,
@@ -239,11 +240,11 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	public Set<Imagem> getImagensDoProduto() {
+	public Set<ImagemEntity> getImagensDoProduto() {
 		return imagensDoProduto;
 	}
 
-	public void setImagensDoProduto(Set<Imagem> imagensDoProduto) {
+	public void setImagensDoProduto(Set<ImagemEntity> imagensDoProduto) {
 		this.imagensDoProduto = imagensDoProduto;
 	}
 
