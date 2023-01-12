@@ -39,7 +39,7 @@ class ProdutoServiceApplicationTests {
 	@Test
 	@DisplayName("Esse teste garante o retorno de um produto cadastrado de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 200 (OK)")
 	void buscarProdutoPeloID() {
-		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.GET, null, Produto.class);
+		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/2", HttpMethod.GET, null, Produto.class);
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());				
 	}
 	
@@ -85,15 +85,25 @@ class ProdutoServiceApplicationTests {
 	@Test
 	@DisplayName("Esse teste garante a atualização de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 201 (CREATED)")
 	void atualizarProduto() {
-		Produto produto = new Produto();
-		produto.setNomeProduto("Cadeira");
-		produto.setDescricao("Uma cadeira legal");
-		produto.setEAN("12131121");
-		produto.setCustoProduto(new BigDecimal(75.0));
-		produto.setPrecoDesconto(new BigDecimal(75.0));
-		produto.setDataDeCadastro(LocalDateTime.now());
-		HttpEntity<Produto> entity = new HttpEntity<Produto>(produto);
-		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.PUT, entity, Produto.class);
+		Produto build = new Produto.ProdutoBuilder()
+				.CEST("123456")
+				.custoProduto(new BigDecimal(75.0))
+				.dataDeCadastro(LocalDateTime.now())
+				.descricao("123456")
+				.EAN("123456")
+				.mesesDeGarantia(25)
+				.mensagemDeGarantia("123456")
+				.NCM("123456")
+				.precoDesconto(new BigDecimal(75.0))
+				.nomeProduto("123456")
+				.atributosDoProduto(new Atributos("Infantil", "vermelho", "plástico"))
+				.avaliacao(new Avaliacao(4, "Bom"))
+				.categoria(new Categoria("Brinquedos", "Carrinhos"))
+				.dimensaoDoProduto(new Dimensao(new BigDecimal(75.0), new BigDecimal(75.0), new BigDecimal(75.0), new BigDecimal(75.0)))
+				.imagensDoProduto(null)
+				.build();
+		HttpEntity<Produto> entity = new HttpEntity<Produto>(build);
+		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/2", HttpMethod.PUT, entity, Produto.class);
 		assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
 	}
 	
@@ -107,7 +117,7 @@ class ProdutoServiceApplicationTests {
 	@Test
 	@DisplayName("Esse teste garante a exclusão de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 204 (NO CONTENT)")
 	void deletarProduto() {
-		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.DELETE, null, Produto.class);
+		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/14", HttpMethod.DELETE, null, Produto.class);
 		assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
 	}
 	
