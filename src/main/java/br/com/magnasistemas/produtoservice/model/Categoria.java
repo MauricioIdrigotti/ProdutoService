@@ -10,6 +10,16 @@ public class Categoria {
 	@NotNull(message = "A sub-categoria não pode ser nulo")
 	private String subCategoria;
 
+	public Categoria(@NotNull(message = "A categoria não pode ser nulo") String nomeCategoria,
+			@NotNull(message = "A sub-categoria não pode ser nulo") String subCategoria) {
+		super();
+		this.nomeCategoria = nomeCategoria;
+		this.subCategoria = subCategoria;
+	}
+
+	public Categoria() {
+	}
+
 	public String getNomeCategoria() {
 		return nomeCategoria;
 	}

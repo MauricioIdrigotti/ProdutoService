@@ -18,6 +18,20 @@ public class Dimensao {
 	@NotNull(message = "O peso não pode ser nulo")
 	private BigDecimal pesoKg;
 
+	public Dimensao(@NotNull(message = "O comprimento não pode ser nulo") BigDecimal comprimentoCm,
+			@NotNull(message = "A largura não pode ser nula") BigDecimal larguraCm,
+			@NotNull(message = "A altura não pode ser nula") BigDecimal alturaCm,
+			@NotNull(message = "O peso não pode ser nulo") BigDecimal pesoKg) {
+		super();
+		this.comprimentoCm = comprimentoCm;
+		this.larguraCm = larguraCm;
+		this.alturaCm = alturaCm;
+		this.pesoKg = pesoKg;
+	}
+	
+	public Dimensao() {
+	}
+
 	public BigDecimal getComprimentoCm() {
 		return comprimentoCm;
 	}

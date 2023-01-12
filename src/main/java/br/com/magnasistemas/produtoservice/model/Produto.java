@@ -52,7 +52,8 @@ public class Produto {
 			String mensagemDeGarantia, Integer mesesDeGarantia,
 			@NotNull(message = "O custo do produto não pode ser nulo") BigDecimal custoProduto,
 			@NotNull(message = "O preço não pode ser nulo") BigDecimal precoDesconto,
-			@NotNull(message = "A data não pode ser nula") LocalDateTime dataDeCadastro) {
+			@NotNull(message = "A data não pode ser nula") LocalDateTime dataDeCadastro, Atributos atributosDoProduto,
+			Avaliacao avaliacao, Categoria categoria, Set<ImagemEntity> imagensDoProduto, Dimensao dimensaoDoProduto) {
 		super();
 		this.nomeProduto = nomeProduto;
 		this.descricao = descricao;
@@ -64,6 +65,11 @@ public class Produto {
 		this.custoProduto = custoProduto;
 		this.precoDesconto = precoDesconto;
 		this.dataDeCadastro = dataDeCadastro;
+		this.atributosDoProduto = atributosDoProduto;
+		this.avaliacao = avaliacao;
+		this.categoria = categoria;
+		this.imagensDoProduto = imagensDoProduto;
+		this.dimensaoDoProduto = dimensaoDoProduto;
 	}
 
 	public Produto() {
@@ -80,6 +86,11 @@ public class Produto {
 		private BigDecimal custoProduto;
 		private BigDecimal precoDesconto;
 		private LocalDateTime dataDeCadastro;
+		private Atributos atributosDoProduto;
+		private Avaliacao avaliacao;
+		private Categoria categoria;
+		private Set<ImagemEntity> imagensDoProduto;
+		private Dimensao dimensaoDoProduto;
 		
 		public ProdutoBuilder nomeProduto(String nomeProduto) {
 			this.nomeProduto = nomeProduto;
@@ -126,13 +137,38 @@ public class Produto {
 			return this;
 		}
 		
+		public ProdutoBuilder atributosDoProduto(Atributos atributosDoProduto) {
+			this.atributosDoProduto = atributosDoProduto;
+			return this;
+		}
+		
+		public ProdutoBuilder avaliacao(Avaliacao avaliacao) {
+			this.avaliacao = avaliacao;
+			return this;
+		}
+		
 		public ProdutoBuilder dataDeCadastro(LocalDateTime dataDeCadastro) {
 			this.dataDeCadastro = dataDeCadastro;
 			return this;
 		}
 		
+		public ProdutoBuilder categoria(Categoria categoria) {
+			this.categoria = categoria;
+			return this;
+		}
+		
+		public ProdutoBuilder imagensDoProduto(Set<ImagemEntity> imagensDoProduto) {
+			this.imagensDoProduto = imagensDoProduto;
+			return this;
+		}
+		
+		public ProdutoBuilder dimensaoDoProduto(Dimensao dimensaoDoProduto) {
+			this.dimensaoDoProduto = dimensaoDoProduto;
+			return this;
+		}
+		
 		public Produto build() {
-			return new Produto(nomeProduto, descricao, EAN, NCM, CEST, mensagemDeGarantia, mesesDeGarantia, custoProduto, precoDesconto, dataDeCadastro); 
+			return new Produto(nomeProduto, descricao, EAN, NCM, CEST, mensagemDeGarantia, mesesDeGarantia, custoProduto, precoDesconto, dataDeCadastro, atributosDoProduto, avaliacao, categoria, imagensDoProduto, dimensaoDoProduto); 
 		}
 	}
 

@@ -16,6 +16,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import br.com.magnasistemas.produtoservice.model.Atributos;
+import br.com.magnasistemas.produtoservice.model.Avaliacao;
+import br.com.magnasistemas.produtoservice.model.Categoria;
+import br.com.magnasistemas.produtoservice.model.Dimensao;
 import br.com.magnasistemas.produtoservice.model.Produto;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -60,15 +64,12 @@ class ProdutoServiceApplicationTests {
 				.NCM("123456")
 				.precoDesconto(new BigDecimal(75.0))
 				.nomeProduto("123456")
+				.atributosDoProduto(new Atributos("Infantil", "vermelho", "plástico"))
+				.avaliacao(new Avaliacao(4, "Bom"))
+				.categoria(new Categoria("Brinquedos", "Carrinhos"))
+				.dimensaoDoProduto(new Dimensao(new BigDecimal(75.0), new BigDecimal(75.0), new BigDecimal(75.0), new BigDecimal(75.0)))
+				.imagensDoProduto(null)
 				.build();
-		
-//		Produto produto = new Produto();
-//		produto.setNomeProduto("Cadeira");
-//		produto.setDescricao("Uma cadeira legal");
-//		produto.setEAN("12131121");
-//		produto.setCustoProduto(new BigDecimal(75.0));
-//		produto.setPrecoDesconto(new BigDecimal(75.0));
-//		produto.setDataDeCadastro(LocalDateTime.now());
 		HttpEntity<Produto> entity = new HttpEntity<Produto>(build);
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto", HttpMethod.POST, entity, Produto.class);
 		assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
@@ -104,7 +105,7 @@ class ProdutoServiceApplicationTests {
 	}
 
 	@Test
-	@DisplayName("Esse teste garante a deleção de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 204 (NO CONTENT)")
+	@DisplayName("Esse teste garante a exclusão de um produto de acordo com o seu ID passado na URL e a verificação de retorno do status HTTP 204 (NO CONTENT)")
 	void deletarProduto() {
 		ResponseEntity<Produto> responseEntity = restTemplate.exchange("/produto/1", HttpMethod.DELETE, null, Produto.class);
 		assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());

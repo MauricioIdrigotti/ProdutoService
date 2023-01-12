@@ -11,6 +11,15 @@ public class Avaliacao {
 	@Nullable
 	private String comentario;
 	
+	public Avaliacao(@NotNull(message = "O valor não pode ser nulo") Integer valorAvaliacao, String comentario) {
+		super();
+		this.valorAvaliacao = valorAvaliacao;
+		this.comentario = comentario;
+	}
+
+	public Avaliacao() {
+	}
+
 	public String getComentario() {
 		return comentario;
 	}

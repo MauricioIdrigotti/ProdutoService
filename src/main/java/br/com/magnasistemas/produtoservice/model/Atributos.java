@@ -13,6 +13,17 @@ public class Atributos {
 	
 	@NotNull(message = "O material não pode ser nulo")
 	private String material;
+	
+	public Atributos(String publicoAlvo, @NotNull(message = "A cor não pode ser nulo") String cor,
+			@NotNull(message = "O material não pode ser nulo") String material) {
+		super();
+		this.publicoAlvo = publicoAlvo;
+		this.cor = cor;
+		this.material = material;
+	}
+
+	public Atributos() {
+	}
 
 	public String getPublicoAlvo() {
 		return publicoAlvo;
