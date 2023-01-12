@@ -100,6 +100,10 @@ public class ProdutoService {
 		Optional<ProdutoEntity> produtoEntity = Optional.of(produtoRepository.findById(id)
 				.orElseThrow(() -> new NaoEncontrouException("Nenhum produto foi encontrado!")));
 		ProdutoEntity entity = produtoEntity.get();
+		AtributosEntity atributosEntity = InstanciarAtributoEntity(produto);
+		AvaliacaoEntity avaliacaoEntity = InstanciarAvaliacaoEntity(produto);
+		DimensaoEntity dimensaoEntity = InstanciarDimensaoEntity(produto);
+		CategoriaEntity categoriaEntity = InstanciarCategoriaEntity(produto);
 		entity.setNomeProduto(produto.getNomeProduto());
 		entity.setDescricao(produto.getDescricao());
 		entity.setEAN(produto.getEAN());
@@ -110,6 +114,11 @@ public class ProdutoService {
 		entity.setCustoProduto(produto.getCustoProduto());
 		entity.setPrecoDesconto(produto.getPrecoDesconto());
 		entity.setDataDeCadastro(produto.getDataDeCadastro());
+		entity.setImagensDoProduto(produto.getImagensDoProduto());
+		entity.setAtributosDoProduto(atributosEntity);
+		entity.setAvaliacao(avaliacaoEntity);
+		entity.setCategoria(categoriaEntity);
+		entity.setDimensaoDoProduto(dimensaoEntity);
 		ProdutoEntity atualizarProduto = produtoRepository.save(produtoEntity.get());
 		converterProdutoEntityParaProdutoModel(atualizarProduto);
 		return "Produto atualizado com sucesso!";
